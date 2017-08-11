@@ -9,6 +9,33 @@ class ControllerSettingSetting extends Controller {
 
 		$this->load->model('setting/setting');
 
+        /**
+         * Моё добавление
+         */
+        if (isset($this->request->post['config_partnetship_text'])) {
+            $data['config_partnership_text'] = $this->request->post['config_partnership_text'];
+        } else {
+            $data['config_partnership_text'] = $this->config->get('config_partnership_text');
+        }
+
+        if (isset($this->request->post['config_partnetship_tax'])) {
+            $data['config_partnership_tax'] = $this->request->post['config_partnership_tax'];
+        } else {
+            $data['config_partnership_tax'] = $this->config->get('config_partnership_tax');
+        }
+
+        $data['partnership_text']=$this->config->get('config_partnership_txt');
+        $data['partnership_tax']=explode(',',$this->config->get('config_partner_tax'));
+
+
+
+
+        /**
+         *
+         */
+
+
+
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			$this->model_setting_setting->editSetting('config', $this->request->post);
 

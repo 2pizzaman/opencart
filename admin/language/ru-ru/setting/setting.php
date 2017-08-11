@@ -122,6 +122,8 @@ $_['entry_error_display']            = 'Показывать ошибки';
 $_['entry_error_log']                = 'Записывать ошибки';
 $_['entry_error_filename']           = 'Файл журнала ошибок';
 $_['entry_status']                   = 'Статус';
+$_['entry_partnership_text'] = 'Partnership Text';
+$_['entry_partnership_tax'] = 'Partnership Tax Forms';
 
 // Help
 $_['help_geocode']                   = 'Пожалуйста, введите ваше местонахождение как GeoCode.';
