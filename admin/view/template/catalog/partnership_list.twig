@@ -1,0 +1,79 @@
+{{ header }}{{ column_left }}
+<div id="content">
+    <div class="page-header">
+        <div class="container-fluid">
+            <h1>{{ heading_title }}</h1>
+            <ul class="breadcrumb">
+                {% for breadcrumb in breadcrumbs %}
+                    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-list"></i>Список</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <td><a href="{{ name_sort_link }}">Name</a></td>
+                                    <td><a href="{{ email_sort_link }}">Email</a></td>
+                                    <td><a href="{{ age_sort_link }}">Age</a></td>
+                                    <td>Company</td>
+                                    <td>Tax Form</td>
+                                    <td>File</td>
+                                    <td>csv</td>
+                                    <td>Delete</td>
+                                    <td>Action</td>
+                                    <td>Comment</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for partnership in partnerships %}
+                                    <tr {{ partnership.tr_style }}>
+                                        <td>{{ partnership.name }}</td>
+                                        <td>{{ partnership.email }}</td>
+                                        <td>{{ partnership.age }}</td>
+                                        <td>{{ partnership.company }}</td>
+                                        <td>{{ partnership.tax_form }}</td>
+                                        <td>{{ partnership.file }}</td>
+                                        <td>
+                                            <a href="{{ partnership.file_csv }}" class="button">
+                                                <i class="fa fa-times" aria-hidden="true"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ partnership.delete_link }}" class="button">
+                                                <i class="fa fa-times" aria-hidden="true"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            {% if (partnership.is_active == 0) %}
+                                                <a href="{{ partnership.activate_link }}" class="button">
+                                                    <i class="fa fa-handshake-o" aria-hidden="true"></i>
+                                                </a>
+                                            {% else %}
+                                                <a href="{{ partnership.deactivate_link }}" class="button">
+                                                    <i class="fa fa-hand-rock-o" aria-hidden="true"></i>
+                                                </a>
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ partnership.comment }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+</div>
+{{ footer }}
